@@ -35,20 +35,25 @@ function onReady (){
 
   });
 
+
   deleteButton.addEventListener('click', event => {
       var itemList = document.getElementById('toDoList');
       var liArray = itemList.children;
-    console.log(liArray);
+      var toBeDeleted = [];
 
       for(var i = 0; i < liArray.length; i++) {
         var inputs = liArray[i].children;
         var toDelete = inputs[0];
 
+
         if(toDelete.checked === true) {
-          liArray[i].parentNode.removeChild(liArray[i]);
+          toBeDeleted.push(liArray[i]);
         }
 
       }
+    while(toBeDeleted.length > 0) {
+      toBeDeleted.pop().remove();
+    }
     });
 
 
